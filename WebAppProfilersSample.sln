@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28705.295
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DB06EFB9-F591-4706-A446-E4880E87A1C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppProfilersSample.MiniProfilerSample", "src\WebAppProfilersSample.MiniProfilerSample\WebAppProfilersSample.MiniProfilerSample.csproj", "{B522338D-8FA0-43C0-A8E3-3C0412A5FDD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppProfilersSample.MiniProfilerSample", "src\WebAppProfilersSample.MiniProfilerSample\WebAppProfilersSample.MiniProfilerSample.csproj", "{B522338D-8FA0-43C0-A8E3-3C0412A5FDD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppProfilersSample.GlimpseSample", "src\WebAppProfilersSample.GlimpseSample\WebAppProfilersSample.GlimpseSample.csproj", "{CC01480E-B00C-4FEC-9F2D-C940C91FC1DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppProfilersSample.GlimpseSample", "src\WebAppProfilersSample.GlimpseSample\WebAppProfilersSample.GlimpseSample.csproj", "{CC01480E-B00C-4FEC-9F2D-C940C91FC1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppProfilersSample.StackifyPrefixSample", "src\WebAppProfilersSample.StackifyPrefixSample\WebAppProfilersSample.StackifyPrefixSample.csproj", "{933F99BD-C332-43D1-AE9A-545206D53AF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppProfilersSample.StackifyPrefixSample", "src\WebAppProfilersSample.StackifyPrefixSample\WebAppProfilersSample.StackifyPrefixSample.csproj", "{933F99BD-C332-43D1-AE9A-545206D53AF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppProfilersSample.Data", "src\WebAppProfilersSample.Data\WebAppProfilersSample.Data.csproj", "{DF69EDB5-207B-4BB6-87FE-C1BD300408D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppProfilersSample.Shared", "src\WebAppProfilersSample.Shared\WebAppProfilersSample.Shared.csproj", "{DF69EDB5-207B-4BB6-87FE-C1BD300408D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B522338D-8FA0-43C0-A8E3-3C0412A5FDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -75,10 +72,16 @@ Global
 		{DF69EDB5-207B-4BB6-87FE-C1BD300408D2}.Release|x86.ActiveCfg = Release|Any CPU
 		{DF69EDB5-207B-4BB6-87FE-C1BD300408D2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B522338D-8FA0-43C0-A8E3-3C0412A5FDD8} = {DB06EFB9-F591-4706-A446-E4880E87A1C0}
 		{CC01480E-B00C-4FEC-9F2D-C940C91FC1DB} = {DB06EFB9-F591-4706-A446-E4880E87A1C0}
 		{933F99BD-C332-43D1-AE9A-545206D53AF9} = {DB06EFB9-F591-4706-A446-E4880E87A1C0}
 		{DF69EDB5-207B-4BB6-87FE-C1BD300408D2} = {DB06EFB9-F591-4706-A446-E4880E87A1C0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61629E79-68F5-486F-95D2-29D7D97E3749}
 	EndGlobalSection
 EndGlobal
