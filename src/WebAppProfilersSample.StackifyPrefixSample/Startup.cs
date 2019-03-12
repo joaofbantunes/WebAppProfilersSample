@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace WebAppProfilersSample.StackifyPrefixSample
 {
@@ -22,6 +23,11 @@ namespace WebAppProfilersSample.StackifyPrefixSample
             services
                 .AddConfiguredMvc()
                 .AddDb(_config);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Stackify Prefix Test API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +38,11 @@ namespace WebAppProfilersSample.StackifyPrefixSample
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Stackify Prefix Test API");
+            });
+            app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
             app.UseMvc();
         }
     }

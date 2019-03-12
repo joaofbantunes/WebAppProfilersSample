@@ -27,7 +27,7 @@ namespace WebAppProfilersSample.Shared.Controllers
 
         [HttpGet]
         [Route("{someId}/others")]
-        public async Task<ActionResult<IReadOnlyCollection<SomeOtherEntity>>> GetAllAsync(long someId)
+        public async Task<ActionResult<IReadOnlyCollection<SomeOtherEntity>>> GetAllOthersAsync(long someId)
         {
             var result = await _db.Others.Where(o => o.Some.Id == someId).ToListAsync();
             return result;
