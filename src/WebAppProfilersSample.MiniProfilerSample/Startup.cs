@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Profiling;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
+using System.Text;
 
 namespace WebAppProfilersSample.MiniProfilerSample
 {
@@ -25,7 +28,8 @@ namespace WebAppProfilersSample.MiniProfilerSample
                 .AddDb(_config);
 
             services
-                .AddMiniProfiler(options => {
+                .AddMiniProfiler(options =>
+                {
                     options.RouteBasePath = "/profiler";
                 })
                 .AddEntityFramework();
@@ -45,10 +49,27 @@ namespace WebAppProfilersSample.MiniProfilerSample
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "MiniProfiler Test API");
-                c.IndexStream = () => File.OpenRead("index.html");
+                c.IndexStream = () =>
+                {
+                    //return File.OpenRead("index.html");
+                    // haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaack 😛
+                    var mockContext = new DefaultHttpContext();
+                    var miniProfiler = MiniProfiler.StartNew("dummy");
+                    var miniProfilerScriptInclude =
+                        miniProfiler.RenderIncludes(mockContext, RenderPosition.Left, true, true, 15, true, false).Value.Replace("<script", "<script data-authorized=\"true\"");
+
+                    using (var reader = new StreamReader(File.OpenRead("index.html")))
+                    {
+                        var fileContent = reader.ReadToEnd();
+                        var editedContent = fileContent.Replace("%replace_with_miniprofiler%", miniProfilerScriptInclude);
+                        return new MemoryStream(Encoding.UTF8.GetBytes(editedContent));
+                    }
+                };
             });
+
             app.UseMiniProfiler();
             app.UseMvc();
         }
